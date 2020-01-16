@@ -3,7 +3,8 @@ class CaffeineBeverage:
 		self.boilWater();
 		self.brew();
 		self.pourInCup();
-		self.addCondiments();
+		if(self.customerWantsCondiments()):
+			self.addCondiments();
 
 	def boilWater(self):
 		print('Boiling water')
@@ -11,6 +12,8 @@ class CaffeineBeverage:
 	def pourInCup(self):
 		print('Pouring into cup');
 
+	def customerWantsCondiments(self):
+		return True
 
 class Coffee(CaffeineBeverage):
 	def brew(self):
@@ -18,6 +21,14 @@ class Coffee(CaffeineBeverage):
 
 	def addCondiments(self):
 		print('Adding Sugar and Milk')
+
+	def customerWantsCondiments(self):
+		print('Do you want condiments?')
+		userInput = raw_input('Enter (y/n): ')
+		if (userInput.lower() == 'y'):
+			return True;
+		else:
+			return False
 
 class Tea(CaffeineBeverage):
 	def brew(self):
